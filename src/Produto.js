@@ -1,4 +1,4 @@
-import { Image, ImageBase, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 
 export default function({titulo , preco, image, }){
@@ -6,7 +6,7 @@ export default function({titulo , preco, image, }){
         <View style={css.caixaMairo} >
             <View style={css.caixa} >
                 <Text style={css.titulo}>{titulo}</Text>
-                <Image source={require [(image)]} />
+                <Image style={css.image} source={{ uri: image, }} />
                 <Text style={css.preco}>{preco}</Text>
             </View>
         </View>
@@ -15,5 +15,15 @@ export default function({titulo , preco, image, }){
 }
 
 const css = StyleSheet .create({
-    
+    image:{
+        width:200,
+        height: 100,
+        marginLeft: 15
+    },
+    caixaMairo:{
+        width:"90%",
+        height:"100%",
+        backgroundColor:"red",
+        marginLeft:15
+    }
 })
