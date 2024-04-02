@@ -1,9 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useBatteryLevel } from 'expo-battery';
 import { TouchableOpacity, Image, StyleSheet, Text, View, SafeAreaView, ScrollView, StatusBar } from "react-native";
 
 import Produto from "./Produto";
+import { UserContext } from "./Context/UserContext";
+import Comprar from "./Comprar";
+import Cadastro from "./Cadastro";
 
 export default function(){
+    const [ bateria, setBateria] = useState();
+    //const{usuario} = useContext(UserProvider);
+    const batteryLevel = useBatteryLevel();
+    const { compra, setCompra} = useContext( UserContext);
+
+    useEffect( () => {
+        setBateria((batteryLevel * 100).toFixed(0));
+    } , [batteryLevel] );
+
+    if( compra ) {
+        return( <Comprar /> )
+    }
+
+
+
     return(
         <View  style={css.caixaPai} >
             <View style={css.caixa}>
@@ -21,12 +40,20 @@ export default function(){
                     <Text style={css.titulo}>Gmc Preta</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
@@ -39,12 +66,20 @@ export default function(){
                     <Text style={css.titulo}>Civic</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) } > |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
@@ -57,12 +92,46 @@ export default function(){
                     <Text style={css.titulo}>Gmc Vermelha</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) } > |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
+                </View>  
+                <View style={css.hr}> 
+                       
+                </View>
+          </View>
+
+          <View style={css.caixaMairo}>
+                <View style={css.CaixaDaMaju}>
+                    <Image style={css.image} source={require("../assets/FotoCarro/Hamer.png")} />
+                    <Text style={css.titulo}>Hamer</Text>
+                </View>
+                <View style={css.CaixaPaiBTN} >
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
@@ -75,30 +144,20 @@ export default function(){
                     <Text style={css.titulo}>Hamer</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={css.hr}> 
-                       
-                </View>
-          </View>
-
-          <View style={css.caixaMairo}>
-                <View style={css.CaixaDaMaju}>
-                    <Image style={css.image} source={require("../assets/FotoCarro/Hamer.png")} />
-                    <Text style={css.titulo}>Hamer</Text>
-                </View>
-                <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
@@ -111,12 +170,20 @@ export default function(){
                     <Text style={css.titulo}>Hamer</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
@@ -129,12 +196,20 @@ export default function(){
                     <Text style={css.titulo}>Hamer</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
@@ -147,21 +222,29 @@ export default function(){
                     <Text style={css.titulo}>Hamer</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
-                    <TouchableOpacity style={css.btn01} >
-                        <Text style={css.Texto}>Teste</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={css.btn02} >
-                        <Text style={css.Texto}> |   TEste</Text>
-                    </TouchableOpacity>
+                    {bateria   > 20 ? 
+                        <View style={css.CaixaPaiBTN}>
+                            <TouchableOpacity style={css.btn01} >
+                                <Text style={css.Texto}>Agendar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={css.btn02} >
+                                <Text style={css.Texto} onPress={() => setCompra( true ) } > |   Comprar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    :   
+                        <TouchableOpacity style={css.btn03} >
+                        <Text style={css.Texto}>Comprar</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
                 <View style={css.hr}> 
                        
                 </View>
           </View>
           </ScrollView>
-    </SafeAreaView>
+        </SafeAreaView>
             
-        </View>
+    </View>
     )
 }
 
@@ -199,6 +282,7 @@ const css = StyleSheet .create({
     },
     caixaMairo:{
         width:"100%",
+        marginBottom:35,
         //backgroundColor:"red",
       
     },
@@ -211,7 +295,11 @@ const css = StyleSheet .create({
         fontSize:25,
         marginLeft:35,
     },
+    btn01:{
+        marginTop: 30,
+    },
     btn02:{
+        marginTop: 30,
         marginLeft: 20,
     },
     CaixaPaiBTN:{
@@ -224,13 +312,13 @@ const css = StyleSheet .create({
         width:500,
         height:2,
         backgroundColor:"black",
-        marginTop:8,
+        marginTop:20,
     },
     container: {
         flex: 1,
         paddingTop: StatusBar.currentHeight,
       },
       scrollView: {
-        marginHorizontal: 20,
+        marginHorizontal: 1,
       },
 })
