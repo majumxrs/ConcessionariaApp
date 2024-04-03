@@ -139,8 +139,8 @@ export default function(){
 
           <View style={css.caixaMairo}>
                 <View style={css.CaixaDaMaju}>
-                    <Image style={css.image} source={require("../assets/FotoCarro/Hamer.png")} />
-                    <Text style={css.titulo}>Hamer</Text>
+                    <Image style={css.image} source={require("../assets/FotoCarro/Ram1500Certa.png")} />
+                    <Text style={css.titulo}>Ram1500</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
                     {bateria   > 20 ? 
@@ -165,8 +165,8 @@ export default function(){
           
           <View style={css.caixaMairo}>
                 <View style={css.CaixaDaMaju}>
-                    <Image style={css.image} source={require("../assets/FotoCarro/Hamer.png")} />
-                    <Text style={css.titulo}>Hamer</Text>
+                    <Image style={css.image} source={require("../assets/FotoCarro/RamLamier.png")} />
+                    <Text style={css.titulo}>Ram Lamier</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
                     {bateria   > 20 ? 
@@ -191,8 +191,8 @@ export default function(){
 
           <View style={css.caixaMairo}>
                 <View style={css.CaixaDaMaju}>
-                    <Image style={css.image} source={require("../assets/FotoCarro/Hamer.png")} />
-                    <Text style={css.titulo}>Hamer</Text>
+                    <Image style={css.image} source={require("../assets/FotoCarro/Cdilac.png")} />
+                    <Text style={css.titulo}>Cadilac</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
                     {bateria   > 20 ? 
@@ -217,8 +217,8 @@ export default function(){
 
           <View style={css.caixaMairo}>
                 <View style={css.CaixaDaMaju}>
-                    <Image style={css.image} source={require("../assets/FotoCarro/Hamer.png")} />
-                    <Text style={css.titulo}>Hamer</Text>
+                    <Image style={css.imageComProblema} source={require("../assets/FotoCarro/BYDHAN.png")} />
+                    <Text style={css.titulo}>BYD HAN</Text>
                 </View>
                 <View style={css.CaixaPaiBTN} >
                     {bateria   > 20 ? 
@@ -254,7 +254,7 @@ const css = StyleSheet .create({
        // justifyContent:"center"
     },  
     caixa:{
-        height:"14%",
+        height:"11%",
         width:"100%",
         backgroundColor:"#13293D",
         //marginLeft:150,
@@ -276,7 +276,10 @@ const css = StyleSheet .create({
         width:175,
         height: 100,
         //backgroundColor:"blue"
-        
+    },
+    imageComProblema:{
+        width:195,
+        height: 180,
     },
     caixaMairo:{
         width:"100%",
