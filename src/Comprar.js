@@ -6,52 +6,71 @@ import { UserContext } from './Context/UserContext'
 export default function Comprar() {
     const{setCompra} = useContext( UserContext);
   return (
-    <View>
-        <SafeAreaView style={css.container}>
-            <ScrollView style={css.scrollView}>
     <View style={css.caixaMairo}>
-        
-        <View style={css.caixa}>
-            <Image style={css.tinyLogo} source={require("../assets/Logoconcessionaria.png")}/>
-        </View>
 
-        
-        <View>
-            <TouchableOpacity style={css.btn01} >
-                <Text onPress={ () => setCompra( false )}  style={css.Texto}>❮</Text>
-            </TouchableOpacity>
-        </View>
-        <View style={css.CaixaImga}>
-            <Image style={css.ImageCarro} source={require("../assets/FotoCarro/Civic.png")} />
-            <Text style={css.TextoCarro}>CIVIC 807</Text>
-        </View>
-        <View style={css.CaixaRiscoLaranja}>
-            <Text style={css.TextoRiscoLaranja}>Total:</Text>
-            <Text style={css.TextoPreco} > R$1000000000</Text>
-        </View>
-        <View style={css.csixaTextoDeta}>
-            <Text style={css.textoDetalhes}>ITENS DE SÉRIE:</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >MODEL YEAR 2024</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP}>PACK SAFETY 2910</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >SERVIÇOS CONECTADOS</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >Abertura remota da tampa traseira</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >Acendimento automático dos faróis</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >Ajuste elétrico de altura do farol</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >Alças auxiliares de acesso ao veículo</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >Alerta de colisão frontal com frenagem autônoma de emergência com detecção de </Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >STING GREY</Text>
-            <Text style={css.TextoDetalhesDEntroCaixaP} >BRANCO PEROLA</Text>
-        </View>
-        <View>
-            <Image  style={css.ImageDetalheCarro}  source={require("../assets/FotoCarro/Civic.png")} />
-        </View>
-        <View>
-         <Text style={css.TextoCarro}>CIVIC 807</Text>
-        </View>
-        
-    </View>
-    </ScrollView>
-        </SafeAreaView>
+            <View style={css.caixa}>
+                <Image style={css.tinyLogo} source={require("../assets/Logoconcessionaria.png")}/>
+            </View>
+
+            <View>
+                <TouchableOpacity style={css.btn01} >
+                    <Text onPress={ () => setCompra( false )}  style={css.Texto}>❮</Text>
+                </TouchableOpacity>
+            </View>
+
+        <SafeAreaView style={css.container}>
+            <ScrollView style={css.scrollView}> 
+
+            <View style={css.CaixaImga}>
+                <Image style={css.ImageCarro} source={require("../assets/FotoCarro/Civic.png")} />
+                <Text style={css.TextoCarro}>CIVIC 807</Text>
+            </View>
+
+            <View style={css.CaixaRiscoLaranja}>
+                <Text style={css.TextoRiscoLaranja}>Total:</Text>
+                <Text style={css.TextoPreco} > R$1000000000</Text>
+            </View>
+    
+            <View>
+               <View style={css.csixaTextoDeta}>
+                    <Text style={css.textoDetalhes}>ITENS DE SÉRIE:</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >MODEL YEAR 2024</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP}>PACK SAFETY 2910</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >SERVIÇOS CONECTADOS</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Abertura remota da tampa traseira</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Acendimento automático dos faróis</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Ajuste elétrico de altura do farol</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Alças auxiliares de acesso ao veículo</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Alerta de colisão frontal com frenagem autônoma de emergência com detecção de </Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >STING GREY</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >BRANCO PEROLA</Text>
+                </View>
+
+                <View>
+                    <Image  style={css.ImageDetalheCarro}  source={require("../assets/FotoCarro/Civic.png")} />
+                </View>
+                
+                <View style={css.csixaTextoDeta}>
+                    <Text style={css.textoDetalhes}>ITENS DE SÉRIE:</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >MODEL YEAR 2024</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP}>PACK SAFETY 2910</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >SERVIÇOS CONECTADOS</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Abertura remota da tampa traseira</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Acendimento automático dos faróis</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Ajuste elétrico de altura do farol</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Alças auxiliares de acesso ao veículo</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >Alerta de colisão frontal com frenagem autônoma de emergência com detecção de </Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >STING GREY</Text>
+                    <Text style={css.TextoDetalhesDEntroCaixaP} >BRANCO PEROLA</Text>
+                </View>
+
+                <View>
+                    <Text style={css.TextoCarro02}>CIVIC 807</Text>
+                </View>
+
+            </View>    
+            </ScrollView>
+        </SafeAreaView>        
     </View>
   )
 }
@@ -59,7 +78,8 @@ export default function Comprar() {
 const css = StyleSheet.create({
     caixaMairo:{
         height:"100%",
-        marginBottom:35,
+        width:"100%",
+        //marginBottom:35,
         //backgroundColor:"red",
     },
     caixa:{
@@ -92,7 +112,7 @@ const css = StyleSheet.create({
     },
     ImageCarro:{
         width:"80%",
-        height:150,
+        height:230,
         marginLeft:34,
         marginTop:-35,
     },
@@ -108,10 +128,10 @@ const css = StyleSheet.create({
         borderColor: '#C1813A',
         //backgroundColor:"red",
         width:"90%",
-        height:"9%",
+        height:"5%",
         marginLeft:20,
         flexDirection:"row",
-        marginTop:35,
+        marginTop:-30,
     },
     TextoRiscoLaranja:{
         fontSize:25,
@@ -135,18 +155,26 @@ const css = StyleSheet.create({
     },
     ImageDetalheCarro:{
         width:"80%",
-        height:150,
+        height:190,
         marginLeft:34,
         marginTop:45,
-        backgroundColor:"red",
+        //backgroundColor:"red",
     },
     container: {
-        // flex: 1,
+        flex: 1,
         width:"100%",
-        paddingTop: StatusBar.currentHeight,
+        height:"100%",
+       // paddingTop: StatusBar.currentHeight,
       },
       scrollView: {
-        // marginHorizontal: 1,
-        width:"100%"
+         marginHorizontal: 1,
+         width:"100%",
+        height:"100%",
+        //backgroundColor: 'pink',
+         margintop:50
+       
       },
+      TextoCarro02:{
+        marginBottom:100,
+      }
 })  

@@ -19,43 +19,43 @@ export default function Cadastro() {
 
     return(
         <View style={css.CaixaTotal}>   
-          <SafeAreaView>
-            <ScrollView>        
-                    <View style={css.caixa}>
-                        <Image
-                            style={css.tinyLogo}
-                            source={require("../assets/Logoconcessionaria.png")}
-                        />
-                    </View>  
-                    <TouchableOpacity>
-                        <Text style={css.BTNVoltar} onPress={ () => setCadastro( false )}>❮</Text> 
-                    </TouchableOpacity>        
-                   <View style={css.PaiCadastrar}>
-                    <Text style={css.nomePag}>Cadastrar-se</Text>
-                   </View>
-                    <View style={css.PaiImagens}>
-                        <Image source={require('../assets/FotoCarro/FacebookPreto.png')} style={css.Face}/>
-                        <Image source={require('../assets/FotoCarro/google.png')} style={css.Gogle}/>
-                        <Image source={require('../assets/FotoCarro/XPreto.png')} style={css.x}/>
-                    </View>
-                    <View style={css.PaiOu}>
-                        <Text style={css.ou}>Ou</Text>
-                    </View>
-                    <View style={css.PaiInput}>
-                        <TextInput style={css.input} textInput={nome} value={nome} onChangeText={(digitado) => setNome(digitado)} placeholder="Nome Completo:" />
-                        <TextInput style={css.input} textInput={datanasc} value={datanasc} onChangeText={(digitado) => setDataNasc(digitado)} placeholder="Data de Nascimento:" />
-                        <TextInput style={css.input} textInput={cpf} value={cpf} onChangeText={(digitado) => setCPF(digitado)} placeholder="CPF:" />
-                        <TextInput style={css.input} textInput={tel} value={tel} onChangeText={(digitado) => setTel(digitado)} placeholder="Telefone:" />
-                        <TextInput style={css.input} textInput={endereco} value={endereco} onChangeText={(digitado) => seEndereco(digitado)} placeholder="Endereço:" />
-                        <TextInput style={css.input} textInput={email} value={email} onChangeText={(digitado) => setEmail(digitado)} placeholder="Email:" />
-                        <TextInput style={css.input} textInput={senha} value={senha} onChangeText={(digitado) => setSenha(digitado)} placeholder="Senha:" />
-                        <TextInput style={css.input} textInput={confsenha} value={confsenha} onChangeText={(digitado) => setConfSenha(digitado)} placeholder="Confirme sua Senha:" />
-                    </View>
-                    <View style={css.PaiCadastrar}>
-                        <TouchableOpacity style={css.btn}>
-                            <Text style={css.Texto}>Cadastrar</Text>
-                        </TouchableOpacity>
-                    </View>                   
+            <View style={css.caixa}>
+                <Image
+                    style={css.tinyLogo}
+                    source={require("../assets/Logoconcessionaria.png")}
+                 />
+            </View>  
+                <SafeAreaView>
+                    <ScrollView> 
+                        <TouchableOpacity>
+                            <Text style={css.BTNVoltar} onPress={ () => setCadastro( false )}>❮</Text> 
+                        </TouchableOpacity> 
+                        <View style={css.PaiCadastrar}>
+                            <Text style={css.nomePag}>Cadastrar-se</Text>
+                        </View>
+                        <View style={css.PaiImagens}>
+                            <Image source={require('../assets/FotoCarro/FacebookPreto.png')} style={css.Face}/>
+                            <Image source={require('../assets/FotoCarro/google.png')} style={css.Gogle}/>
+                            <Image source={require('../assets/FotoCarro/XPreto.png')} style={css.x}/>
+                        </View>
+                        <View style={css.PaiOu}>
+                            <Text style={css.ou}>Ou</Text>
+                        </View>
+                        <View style={css.PaiInput}>
+                            <TextInput style={css.input} textInput={nome} value={nome} onChangeText={(digitado) => setNome(digitado)} placeholder="Nome Completo:" />
+                            <TextInput style={css.input} textInput={datanasc} value={datanasc} onChangeText={(digitado) => setDataNasc(digitado)} placeholder="Data de Nascimento:" />
+                            <TextInput style={css.input} textInput={cpf} value={cpf} onChangeText={(digitado) => setCPF(digitado)} placeholder="CPF:" />
+                            <TextInput style={css.input} textInput={tel} value={tel} onChangeText={(digitado) => setTel(digitado)} placeholder="Telefone:" />
+                            <TextInput style={css.input} textInput={endereco} value={endereco} onChangeText={(digitado) => seEndereco(digitado)} placeholder="Endereço:" />
+                            <TextInput style={css.input} textInput={email} value={email} onChangeText={(digitado) => setEmail(digitado)} placeholder="Email:" />
+                            <TextInput style={css.input} textInput={senha} value={senha} onChangeText={(digitado) => setSenha(digitado)} placeholder="Senha:" />
+                            <TextInput style={css.input} textInput={confsenha} value={confsenha} onChangeText={(digitado) => setConfSenha(digitado)} placeholder="Confirme sua Senha:" />
+                        </View>
+                        <View style={css.PaiCadastrar}>
+                            <TouchableOpacity style={css.btn}>
+                                <Text style={css.Texto}>Cadastrar</Text>
+                            </TouchableOpacity>
+                        </View>                   
                 </ScrollView>
             </SafeAreaView>
         </View>
@@ -154,12 +154,19 @@ const css = StyleSheet .create({
         height: 350,
     },
     container: {
-        width:"100%",  
-        paddingTop: StatusBar.currentHeight,      
-    },
-    scrollView: {
+        flex: 1,
         width:"100%",
-    },
+        height:"100%",
+        paddingTop: StatusBar.currentHeight,
+      },
+      scrollView: {
+        marginHorizontal: 1,
+        width:"100%",
+        height:"100%",
+        //backgroundColor: 'pink',
+        margintop:50
+       
+      },
     btn:{
         width:200,
         height: 50,
@@ -168,12 +175,16 @@ const css = StyleSheet .create({
         backgroundColor:"#13293D",
         display: "flex",
         justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        marginBottom:120,
       },
       Texto:{
         color:"white",
         fontSize:30,
         fontWeight:"850"
       },
-
+      CaixaTotal:{
+        width:"100%",
+        height:"100%",
+      }
 })
