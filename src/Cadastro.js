@@ -135,7 +135,7 @@ const css = StyleSheet .create({
     },
     PaiInput: {
         display:"flex",
-        alignItems:"center"
+        alignItems:"center",
     },
     input:{
         width:"80%",
