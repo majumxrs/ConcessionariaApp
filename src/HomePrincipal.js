@@ -33,7 +33,6 @@ export default function(){
             </View>
             <SafeAreaView style={css.container}>
             <ScrollView style={css.scrollView}>
-
             <View style={css.caixaMairo}>
                 <View style={css.CaixaDaMaju}>
                     <Image style={css.image} source={require("../assets/FotoCarro/GmcPreta.png")} />
@@ -238,12 +237,11 @@ export default function(){
                     }
                 </View>
                 <View style={css.hr}> 
-                       
+                
                 </View>
           </View>
           </ScrollView>
-        </SafeAreaView>
-            
+        </SafeAreaView>            
     </View>
     )
 }
