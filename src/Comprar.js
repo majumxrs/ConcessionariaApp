@@ -47,7 +47,7 @@ export default function Comprar() {
                 </View>
 
                 <View>
-                    <Image  style={css.ImageDetalheCarro}  source={require("../assets/FotoCarro/Civic.png")} />
+                    <Image  style={css.ImageDetalheCarro}  source={{uri:"https://www.webmotors.com.br/wp-content/uploads/2023/12/28173908/Honda-Civic-9a-geracao-2.webp",}} />
                 </View>
                 
                 <View style={css.csixaTextoDeta}>
