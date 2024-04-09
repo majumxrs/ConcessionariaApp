@@ -5,13 +5,28 @@ import { TouchableOpacity, Image, StyleSheet, Text, View, SafeAreaView, ScrollVi
 import Produto from "./Produto";
 import { UserContext } from "./Context/UserContext";
 import Comprar from "./Comprar";
+import Comprar02 from "./Comprar02";
+import Comprar03 from "./Comprar03";
+import Comprar04 from "./Comprar04";
+ import Comprar05 from "./Comprar05";
+ import Comprar06 from "./Comprar06";
+ import Comprar07 from "./Comprar07";
+ import Comprar08 from "./Comprar08";
 import Cadastro from "./Cadastro";
 
 export default function(){
     const [ bateria, setBateria] = useState();
+    const [rede , setRede] = useState();
     //const{usuario} = useContext(UserProvider);
     const batteryLevel = useBatteryLevel();
     const { compra, setCompra} = useContext( UserContext);
+    const { compra02, setCompra02} = useContext( UserContext);
+    const { compra03, setCompra03} = useContext( UserContext);
+    const { compra04, setCompra04} = useContext( UserContext);
+    const { compra05, setCompra05} = useContext( UserContext);
+    const { compra06, setCompra06} = useContext( UserContext);
+    const { compra07, setCompra07} = useContext( UserContext);
+    const { compra08, setCompra08} = useContext( UserContext);
 
     useEffect( () => {
         setBateria((batteryLevel * 100).toFixed(0));
@@ -20,7 +35,36 @@ export default function(){
     if( compra ) {
         return( <Comprar /> )
     }
-
+    if( compra02 ) {
+        return( <Comprar02 /> )
+    }
+    if( compra03 ) {
+        return( <Comprar03 /> )
+    }
+    if( compra04 ) {
+        return( <Comprar04 /> )
+    }
+     if( compra05 ) {
+         return( <Comprar05 /> )
+     }
+     if( compra06 ) {
+        return( <Comprar06 /> )
+    }
+    if( compra07 ) {
+         return( <Comprar07 /> )
+     }
+     if( compra08 ) {
+        return( <Comprar08 /> )
+    }
+    async function getStatus(){
+        const status = await Network.getNetworkStateAsync();
+        if(status.type == "WIFI"){
+            setRede(true);
+        }
+    }
+    useEffect(() => {
+        getStatus();
+    }, [rede]);
 
 
     return(
@@ -45,7 +89,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra02( true ) }> |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   
@@ -54,6 +98,7 @@ export default function(){
                         </TouchableOpacity>
                     }
                 </View>
+                { rede ? <Text>Recurso Premiun</Text> : <Text>Conecte no Wifi</Text>}
                 <View style={css.hr}> 
                        
                 </View>
@@ -97,7 +142,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) } > |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra03( true ) } > |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   
@@ -123,7 +168,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra04( true ) }> |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   
@@ -149,7 +194,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra05( true ) }> |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   
@@ -175,7 +220,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra06( true ) }> |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   
@@ -201,7 +246,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) }> |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra07( true ) }> |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   
@@ -227,7 +272,7 @@ export default function(){
                                 <Text style={css.Texto}>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
-                                <Text style={css.Texto} onPress={() => setCompra( true ) } > |   Comprar</Text>
+                                <Text style={css.Texto} onPress={() => setCompra08( true ) } > |   Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     :   

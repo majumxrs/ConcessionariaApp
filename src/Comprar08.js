@@ -4,7 +4,7 @@ import HomePrincipal from './HomePrincipal'
 import { UserContext } from './Context/UserContext'
 
 export default function Comprar() {
-    const{setCompra} = useContext( UserContext);
+    const{setCompra08} = useContext( UserContext);
   return (
     <View style={css.caixaMairo}>
 
@@ -14,7 +14,7 @@ export default function Comprar() {
 
             <View>
                 <TouchableOpacity style={css.btn01} >
-                    <Text onPress={ () => setCompra( false )}  style={css.Texto}>❮</Text>
+                    <Text onPress={ () => setCompra08( false )}  style={css.Texto}>❮</Text>
                 </TouchableOpacity>
             </View>
 
@@ -22,7 +22,7 @@ export default function Comprar() {
             <ScrollView style={css.scrollView}> 
 
             <View style={css.CaixaImga}>
-                <Image style={css.ImageCarro} source={require("../assets/FotoCarro/Civic.png")} />
+                <Image style={css.ImageCarro} source={require("../assets/FotoCarro/BYDHAN.png")} />
                 <Text style={css.TextoCarro}>CIVIC 807</Text>
             </View>
 
@@ -114,9 +114,9 @@ const css = StyleSheet.create({
     },
     ImageCarro:{
         width:"80%",
-        height:230,
+        height:200,
         marginLeft:34,
-        marginTop:-35,
+        marginTop:5,
     },
     TextoCarro:{
         fontSize:25,
@@ -156,7 +156,7 @@ const css = StyleSheet.create({
         marginLeft:15,
     },
     ImageDetalheCarro:{
-        width:"80%",
+        width:"90%",
         height:190,
         marginLeft:34,
         marginTop:45,

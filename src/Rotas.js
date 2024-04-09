@@ -10,6 +10,7 @@ import Login from "./Login";
 import Agenda from "./Agenda";
 import AgendaSemWifi from "./AgendaSemWifi";
 import Cadastro from "./Cadastro";
+import Carrinho from "./Carrinho";
 import TelaCompraSemWifi from "./TelaCompraSemWifi";
 import { UserContext } from './Context/UserContext';
 
@@ -31,6 +32,7 @@ export default function Rotas() {
               <Tab.Screen name='Agenda' component={Agenda}/>
               <Tab.Screen name='AgendaSemWifi' component={AgendaSemWifi}/>
               <Tab.Screen name='TelaCompraSemWifi' component={TelaCompraSemWifi}/>
+              <Tab.Screen name='Home2.0' component={Home}/>
             </Tab.Navigator>
         </NavigationContainer>
         

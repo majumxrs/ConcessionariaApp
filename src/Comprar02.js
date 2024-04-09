@@ -4,7 +4,7 @@ import HomePrincipal from './HomePrincipal'
 import { UserContext } from './Context/UserContext'
 
 export default function Comprar() {
-    const{setCompra} = useContext( UserContext);
+    const{setCompra02} = useContext( UserContext);
   return (
     <View style={css.caixaMairo}>
 
@@ -14,7 +14,7 @@ export default function Comprar() {
 
             <View>
                 <TouchableOpacity style={css.btn01} >
-                    <Text onPress={ () => setCompra( false )}  style={css.Texto}>❮</Text>
+                    <Text onPress={ () => setCompra02( false )}  style={css.Texto}>❮</Text>
                 </TouchableOpacity>
             </View>
 
@@ -22,7 +22,7 @@ export default function Comprar() {
             <ScrollView style={css.scrollView}> 
 
             <View style={css.CaixaImga}>
-                <Image style={css.ImageCarro} source={require("../assets/FotoCarro/Civic.png")} />
+                <Image style={css.ImageCarro} source={require("../assets/FotoCarro/GmcPreta.png")} />
                 <Text style={css.TextoCarro}>CIVIC 807</Text>
             </View>
 
