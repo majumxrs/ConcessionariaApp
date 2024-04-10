@@ -10,9 +10,7 @@ function UserProvider({children})
     const[ logado, setLogado ] = useState( false );
     const[ cadastro, setCadastro ] = useState( false );
     const[ compra, setCompra ] = useState( false );
-<<<<<<< HEAD
     const[ agendar, setAgendar ] = useState( false );
-=======
     const[ compra02, setCompra02 ] = useState( false );
     const[ compra03, setCompra03 ] = useState( false );
     const[ compra04, setCompra04 ] = useState( false );
@@ -20,7 +18,6 @@ function UserProvider({children})
     const[ compra06, setCompra06 ] = useState( false );
     const[ compra07, setCompra07 ] = useState( false );
     const[ compra08, setCompra08 ] = useState( false );
->>>>>>> 0597bc46924d14aad55e71c63c70d751c64e0bf8
   
 
     async function Login (email, senha )
@@ -43,15 +40,11 @@ function UserProvider({children})
         infoUsuario();
     }, [] );
     return(
-<<<<<<< HEAD
-        <UserContext.Provider value={ { usuario: usuario, logado:logado, cadastro: cadastro, compra: compra , agendar:agendar, Login, infoUsuario, setCadastro, setCompra, setAgendar  } }>
-=======
         <UserContext.Provider value={ { 
             
             usuario: usuario, logado:logado, cadastro: cadastro, compra: compra, compra02:compra02, compra03:compra03, compra04:compra04, compra05:compra05 ,compra06:compra06, compra07:compra07,compra08:compra08,
             Login, infoUsuario, setCadastro, setCompra, setCompra02, setCompra03, setCompra04, setCompra05, setCompra06, setCompra07, setCompra08
             } }>
->>>>>>> 0597bc46924d14aad55e71c63c70d751c64e0bf8
             {children}
         </UserContext.Provider>
     )

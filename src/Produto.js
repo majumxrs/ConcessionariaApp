@@ -10,7 +10,7 @@ export default function Produto({titulo , BTN02, BTN01,imagem }) {
                     <Text style={css.BTN01}>{BTN01}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={css.btn01} >
-                    <Text style={css.BTN02}>{BTN02}</Text>
+                    <Text style={css.BTN02} >{BTN02}</Text>
                 </TouchableOpacity>
             </View>
         </View>

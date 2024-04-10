@@ -57,7 +57,7 @@ const dados =[
   imagem:require('../assets/FotoCarro/BYDHAN.png'),
   titulo: "BYDHAN",
   BTN01: "Comprar",
-  BTN02: "|  Agendar"
+  BTN02: "|  Agendar" 
 },
    
 ]
@@ -75,7 +75,6 @@ export default function Itens()
                 data={dados}
                 renderItem={({item}) => (<View style={css.Caixapai}>
                   <View style={css.teste}>
-                    
                     <Produto imagem={item.imagem} titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02} /> 
                   </View>
                   
