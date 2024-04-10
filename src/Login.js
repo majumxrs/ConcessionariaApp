@@ -62,7 +62,7 @@ const css = StyleSheet.create({
         justifyContent:"center",
         backgroundColor: '#13293D',
         width:"100%",
-        height:800,
+        height:900,
     },
     LogoView: {
         width:"50%",

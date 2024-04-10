@@ -15,7 +15,7 @@ import Comprar04 from "./Comprar04";
 import Cadastro from "./Cadastro";
 import Agenda from "./Agenda";
 
-export default function(){
+export default function HomePrincipal({navigation}){
     const [ bateria, setBateria] = useState();
     const [rede , setRede] = useState();
     //const{usuario} = useContext(UserProvider);
@@ -71,7 +71,6 @@ export default function(){
         getStatus();
     }, [rede]);
 
-
     return(
         <View  style={css.caixaPai} >
             <View style={css.caixa}>
@@ -91,7 +90,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => navigation.navigate( "Agenda" ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra02( true ) }> |   Comprar</Text>
