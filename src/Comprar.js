@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Image, StatusBar,SafeAreaView
 import HomePrincipal from './HomePrincipal'
 import { UserContext } from './Context/UserContext'
 
-export default function Comprar() {
+export default function Comprar({imagem}) {
     const{setCompra} = useContext( UserContext);
   return (
     <View style={css.caixaMairo}>

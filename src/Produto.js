@@ -1,18 +1,48 @@
+import { useState , useEffect , useContext } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useBatteryLevel } from 'expo-battery';
 
 export default function Produto({titulo , BTN02, BTN01,imagem }) {
+
+    const [ bateria, setBateria] = useState();
+    const [rede , setRede] = useState();
+    //const{usuario} = useContext(UserProvider);
+    const batteryLevel = useBatteryLevel();
+
+    useEffect( () => {
+        setBateria((batteryLevel * 100).toFixed(0));
+    } , [batteryLevel] );
+
+   
+    async function getStatus(){
+        const status = await Network.getNetworkStateAsync();
+        if(status.type == "WIFI"){
+            setRede(true);
+        }
+    }
+    useEffect(() => {
+        getStatus();
+    }, [rede]);
+
     return(
         <View style={css.caixa}>
             <Image source={imagem} style={css.img}  />
             <Text style={css.titulo}>{titulo}</Text>
+            {bateria >20 ? 
             <View style={css.CaixaBTN}>
-                <TouchableOpacity style={css.btn01} >
-                    <Text style={css.BTN01}>{BTN01}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={css.btn01} >
-                    <Text style={css.BTN02} >{BTN02}</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={css.btn01} >
+                <Text style={css.BTN01}>{BTN01}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={css.btn01} >
+                <Text style={css.BTN02}>{BTN02}</Text>
+            </TouchableOpacity>
+        </View> 
+        :
+            <TouchableOpacity style={css.btn01} >
+                <Text style={css.BTN02}>{BTN02}</Text>
+            </TouchableOpacity>
+            }
+            { rede ? <Text>Recurso Premiun</Text> : <Text>Conecte no Wifi</Text>}
         </View>
     )
 }
