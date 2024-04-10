@@ -13,6 +13,7 @@ import Comprar04 from "./Comprar04";
  import Comprar07 from "./Comprar07";
  import Comprar08 from "./Comprar08";
 import Cadastro from "./Cadastro";
+import Agenda from "./Agenda";
 
 export default function(){
     const [ bateria, setBateria] = useState();
@@ -27,6 +28,10 @@ export default function(){
     const { compra06, setCompra06} = useContext( UserContext);
     const { compra07, setCompra07} = useContext( UserContext);
     const { compra08, setCompra08} = useContext( UserContext);
+
+    const{setCadastro} = useContext( UserContext );
+
+    const { agendar, setAgendar} = useContext( UserContext);
 
     useEffect( () => {
         setBateria((batteryLevel * 100).toFixed(0));
@@ -86,7 +91,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra02( true ) }> |   Comprar</Text>
@@ -113,7 +118,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra( true ) } > |   Comprar</Text>
@@ -139,7 +144,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra03( true ) } > |   Comprar</Text>
@@ -165,7 +170,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra04( true ) }> |   Comprar</Text>
@@ -191,7 +196,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra05( true ) }> |   Comprar</Text>
@@ -217,7 +222,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra06( true ) }> |   Comprar</Text>
@@ -243,7 +248,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra07( true ) }> |   Comprar</Text>
@@ -269,7 +274,7 @@ export default function(){
                     {bateria   > 20 ? 
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn01} >
-                                <Text style={css.Texto}>Agendar</Text>
+                                <Text style={css.Texto} onPress={() => setAgendar( true ) }>Agendar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={css.btn02} >
                                 <Text style={css.Texto} onPress={() => setCompra08( true ) } > |   Comprar</Text>
