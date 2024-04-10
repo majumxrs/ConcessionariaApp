@@ -1,6 +1,7 @@
-import { useState , useEffect , useContext } from 'react';
+import { useState , useEffect  } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useBatteryLevel } from 'expo-battery';
+import * as Network from 'expo-network';
 
 export default function Produto({titulo , BTN02, BTN01,imagem }) {
 
@@ -9,40 +10,77 @@ export default function Produto({titulo , BTN02, BTN01,imagem }) {
     //const{usuario} = useContext(UserProvider);
     const batteryLevel = useBatteryLevel();
 
+    async function getPermissions()
+ {
+    const { status } = await Calendar.requestCalendarPermissionsAsync();
+    if (status === 'granted') {
+    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
+    }
+ }
+
+ useEffect(() => {
+  getPermissions();
+ }, []);
+
+    async function getStatus()
+    {
+      const status = await Network.getNetworkStateAsync();
+        console.log( status );
+      if( status.type == "WIFI"){
+        setRede( true );
+      } else{
+        setRede( false );
+      }
+    }
+
+    useEffect( () => {
+      getStatus();
+    } , [] );
+
+    useEffect( () => {
+      getStatus();
+    } , [rede] );
+
+
     useEffect( () => {
         setBateria((batteryLevel * 100).toFixed(0));
     } , [batteryLevel] );
 
-   
-    async function getStatus(){
-        const status = await Network.getNetworkStateAsync();
-        if(status.type == "WIFI"){
-            setRede(true);
-        }
+    async function getPermissions()
+ {
+    const { status } = await Calendar.requestCalendarPermissionsAsync();
+    if (status === 'granted') {
+    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
     }
-    useEffect(() => {
-        getStatus();
-    }, [rede]);
+ }
 
+  
     return(
-        <View style={css.caixa}>
-            <Image source={imagem} style={css.img}  />
-            <Text style={css.titulo}>{titulo}</Text>
-            {bateria >20 ? 
-            <View style={css.CaixaBTN}>
-            <TouchableOpacity style={css.btn01} >
-                <Text style={css.BTN01}>{BTN01}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={css.btn01} >
-                <Text style={css.BTN02}>{BTN02}</Text>
-            </TouchableOpacity>
-        </View> 
-        :
-            <TouchableOpacity style={css.btn01} >
-                <Text style={css.BTN02}>{BTN02}</Text>
-            </TouchableOpacity>
+        <View >
+             { rede ? <View style={css.caixa}>
+                <Image source={imagem} style={css.img}  />
+                <Text style={css.titulo}>{titulo}</Text>
+                {bateria >20 ? 
+                    <View style={css.CaixaBTN}>
+                        <TouchableOpacity style={css.btn01} >
+                            <Text style={css.BTN01}>{BTN01}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={css.btn01} >
+                            <Text style={css.BTN02}>{BTN02}</Text>
+                        </TouchableOpacity>
+                    </View> 
+            :
+                <TouchableOpacity style={css.btn01} >
+                    <Text style={css.BTN02}>{BTN02}</Text>
+                </TouchableOpacity>
             }
-            { rede ? <Text>Recurso Premiun</Text> : <Text>Conecte no Wifi</Text>}
+             </View> 
+             :
+            <View style={css.caixa} >
+                <Image source={imagem} style={css.img}  />
+                <Text style={css.titulo}>{titulo}</Text>
+            </View>}
+             
         </View>
     )
 }
