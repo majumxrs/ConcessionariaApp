@@ -7,57 +7,57 @@ const dados =[
         id: "01",
         imagem: require('../assets/FotoCarro/GmcPreta.png'),
         titulo: "GMC Preta",
-        BTN01: "Comprar",
-        BTN02: "|  Agendar"
+        BTN01: "Agendar  |",
+        BTN02: "Comprar"
     },
     {
       id: "02",
       imagem:require('../assets/FotoCarro/Civic.png'),
       titulo: "Civic",
-      BTN01: "Comprar",
-      BTN02: "|  Agendar"
+      BTN01: "Agendar  |",
+      BTN02: "Comprar"
   },
   {
     id: "03",
     imagem:require('../assets/FotoCarro/Hamer.png'),
     titulo: "Hamer",
-    BTN01: "Comprar",
-    BTN02: "|  Agendar"
+    BTN01: "Agendar  |",
+    BTN02: "Comprar"
 },
 {
   id: "04",
   imagem:require('../assets/FotoCarro/GmcVermelha.png'),
   titulo: "GMC",
-  BTN01: "Comprar",
-  BTN02: "|  Agendar"
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
 },
 {
   id: "05",
   imagem:require('../assets/FotoCarro/Ram1500Certa.png'),
   titulo: "RAM 1500",
-  BTN01: "Comprar",
-  BTN02: "|  Agendar"
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
 },
 {
   id: "06",
   imagem:require('../assets/FotoCarro/RamLamier.png'),
   titulo: "RamLamier",
-  BTN01: "Comprar",
-  BTN02: "|  Agendar"
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
 },
 {
   id: "07",
   imagem:require('../assets/FotoCarro/Cdilac.png'),
   titulo: "Cdilac",
-  BTN01: "Comprar",
-  BTN02: "|  Agendar"
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
 },
 {
   id: "08",
   imagem:require('../assets/FotoCarro/BYDHAN.png'),
   titulo: "BYDHAN",
-  BTN01: "Comprar",
-  BTN02: "|  Agendar"
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
 },
    
 ]
@@ -109,7 +109,7 @@ tinyLogo:{
 },
 Caixapai:{
         padding: 30,
-        borderColor: "#C1813A",
+       // borderColor: "#C1813A",
         borderWidth:1,
         display: "flex",
         justifyContent: "center",
