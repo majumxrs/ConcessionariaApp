@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 export default function Produto({titulo , BTN02, BTN01,imagem }) {
     return(
         <View style={css.caixa}>
+            <Image source={imagem} style={css.img}  />
             <Text style={css.titulo}>{titulo}</Text>
             <View style={css.CaixaBTN}>
                 <TouchableOpacity style={css.btn01} >
@@ -19,27 +20,36 @@ export default function Produto({titulo , BTN02, BTN01,imagem }) {
 const css = StyleSheet .create({
     caixa:{
         width:"100%",
-        //display: "flex",
+        display: "flex",
         justifyContent: "center",
         alignItems:"center"
     },
     titulo: {
         fontSize: 25,
-        marginTop:-20,
-        marginLeft:140,
+        marginLeft:150,
+        marginTop:-70,
     },
     BTN01:{
-        color:"#5ccd32",
-        fontSize: 20,
-       // marginTop:80,
-        marginLeft:190,
+        color:"#C1813A",
+        fontSize: 25,
+        marginTop:50,
+
     },
     BTN02:{
-        marginLeft:190,
-        color:"#5ccd32",
-        fontSize: 20,
+        color:"#C1813A",
+        fontSize: 25,
+        marginTop:50,
+        marginLeft:10,
     },
     CaixaBTN:{
-        marginTop:100,
+        display: 'flex',
+        flexDirection:'row',
+        //marginBottom:80,
+    },
+    img: {
+        width:190, 
+        height:120,
+        //backgroundColor:"red",
+        marginRight:190,
     }
 })

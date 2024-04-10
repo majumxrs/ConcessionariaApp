@@ -74,9 +74,9 @@ export default function Itens()
             <FlatList
                 data={dados}
                 renderItem={({item}) => (<View style={css.Caixapai}>
-                  <View>
-                    <Produto titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02} /> 
-                    <Image source={item.imagem} style={css.IMG}  />
+                  <View style={css.teste}>
+                    
+                    <Produto imagem={item.imagem} titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02} /> 
                   </View>
                   
                 </View>) }
@@ -94,7 +94,6 @@ const css = StyleSheet.create({
     display:"flex",
      // margin: 10,
      // gap: 50,
-     
   },
   caixa:{
     height:"14%",
@@ -108,22 +107,15 @@ tinyLogo:{
     marginTop:29,
     marginLeft:150
 },
-IMG:{
-  width:180, 
-  height:120,
-  marginTop:-130,
-  backgroundColor:"red",
-  marginRight:200,
-
-},
 Caixapai:{
-  height: 250,
-        padding: 10,
-        borderColor: "#5ccd32",
+        padding: 30,
+        borderColor: "#C1813A",
         borderWidth:1,
-        borderRadius:5,
         display: "flex",
         justifyContent: "center",
-        alignItems:"center"
+        alignItems:"center",
+},
+teste: {
+  display:'flex'
 }
 })
