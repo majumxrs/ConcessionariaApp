@@ -12,50 +12,50 @@ const dados =[
     },
     {
       id: "02",
-      imagem:'../assets/FotoCarro/Civic.png',
+      imagem:require('../assets/FotoCarro/Civic.png'),
       titulo: "Civic",
       BTN01: "Comprar",
       BTN02: "|  Agendar"
   },
   {
     id: "03",
-    imagem:'../assets/FotoCarro/Hamer.png',
+    imagem:require('../assets/FotoCarro/Hamer.png'),
     titulo: "Hamer",
     BTN01: "Comprar",
     BTN02: "|  Agendar"
 },
 {
   id: "04",
-  imagem:'../assets/FotoCarro/GmcVermelha.png',
+  imagem:require('../assets/FotoCarro/GmcVermelha.png'),
   titulo: "GMC",
   BTN01: "Comprar",
   BTN02: "|  Agendar"
 },
 {
   id: "05",
-  imagem:'../assets/FotoCarro/Ram1500Certa.png',
+  imagem:require('../assets/FotoCarro/Ram1500Certa.png'),
   titulo: "RAM 1500",
   BTN01: "Comprar",
   BTN02: "|  Agendar"
 },
 {
   id: "06",
-  imagem:'../assets/FotoCarro/Ram1500Certa.png',
-  titulo: "RAM 1500",
+  imagem:require('../assets/FotoCarro/RamLamier.png'),
+  titulo: "RamLamier",
   BTN01: "Comprar",
   BTN02: "|  Agendar"
 },
 {
   id: "07",
-  imagem:'../assets/FotoCarro/Ram1500Certa.png',
-  titulo: "RAM 1500",
+  imagem:require('../assets/FotoCarro/Cdilac.png'),
+  titulo: "Cdilac",
   BTN01: "Comprar",
   BTN02: "|  Agendar"
 },
 {
   id: "08",
-  imagem:'../assets/FotoCarro/Ram1500Certa.png',
-  titulo: "RAM 1500",
+  imagem:require('../assets/FotoCarro/BYDHAN.png'),
+  titulo: "BYDHAN",
   BTN01: "Comprar",
   BTN02: "|  Agendar"
 },
@@ -64,7 +64,7 @@ const dados =[
 export default function Itens()
 {
     return(
-        <View style={css.conteiner}>
+        <View >
           <View style={css.caixa}>
                 <Image
                     style={css.tinyLogo}
@@ -73,22 +73,25 @@ export default function Itens()
             </View>
             <FlatList
                 data={dados}
-                renderItem={({item}) => (<View>
-                  <Image source={item.imagem} style={{width:200, height:200}}  />
-                </View>) 
-                /*<Produto titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02}  image={{ item.image}} />*/}
+                renderItem={({item}) => (<View style={css.Caixapai}>
+                  <View>
+                    <Produto titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02} /> 
+                    <Image source={item.imagem} style={css.IMG}  />
+                  </View>
+                  
+                </View>) }
                 keyExtractor={item => item.id}
                 contentContainerStyle={css.conteiner}
                 horizontal={false}
-                numColumns={2}
+                
             />
         </View>
     );
 }
 const css = StyleSheet.create({
   conteiner:{
-      width:"100%",
-      display:"flex",
+    width:"100%",
+    display:"flex",
      // margin: 10,
      // gap: 50,
      
@@ -105,4 +108,22 @@ tinyLogo:{
     marginTop:29,
     marginLeft:150
 },
+IMG:{
+  width:180, 
+  height:120,
+  marginTop:-130,
+  backgroundColor:"red",
+  marginRight:200,
+
+},
+Caixapai:{
+  height: 250,
+        padding: 10,
+        borderColor: "#5ccd32",
+        borderWidth:1,
+        borderRadius:5,
+        display: "flex",
+        justifyContent: "center",
+        alignItems:"center"
+}
 })
