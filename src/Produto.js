@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Network from 'expo-network';
 import * as Calendar from 'expo-calendar';
 
-export default function Produto({ titulo, imagem, navigation, preco }) {
+export default function Produto({ titulo, imagem, navigation }) {
 
     const [bateria, setBateria] = useState();
     const [rede, setRede] = useState();
@@ -62,8 +62,7 @@ export default function Produto({ titulo, imagem, navigation, preco }) {
         await AsyncStorage.removeItem( "produto" );
         const produto = {
             titulo: titulo,
-            imagem: imagem,
-            preco: preco
+            imagem: imagem
         }
         await AsyncStorage.setItem( "produto", JSON.stringify( produto ) );
         navigation.navigate( "Comprar" );
