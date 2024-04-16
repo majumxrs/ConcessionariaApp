@@ -93,15 +93,16 @@ const css = StyleSheet.create({
     display:"flex",
   },
   caixa:{
-    height:"14%",
+    height:95,
     width:"100%",
     backgroundColor:"#13293D", 
+    display:"flex",
+    alignItems:"center"
   },
   tinyLogo:{
     height:"55%",
     width:"25%",
     marginTop:29,
-    marginLeft:150
   },
   Caixapai:{
     padding: 30,

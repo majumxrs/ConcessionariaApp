@@ -2,12 +2,19 @@ import {useState, useEffect, useContext} from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, StatusBar,SafeAreaView, ScrollView } from 'react-native';
 import { UserContext } from './Context/UserContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CompraFinalizada from './CompraFinalizada';
 
 export default function Comprar({navigation, imagem, titulo}) {
-    const { setCompra } = useContext(UserContext);
     const [produto, setProduto] = useState(null);
+    const { compraFinalizada, setCompraFinalizada} = useContext( UserContext);
+
+
+    if( compraFinalizada ) {
+        return( <CompraFinalizada/> )
+      }
     
-    async function getProduto() {
+    async function getProduto() 
+    {
         const produtoData = await AsyncStorage.getItem("produto");
         if (produtoData) {
             const produtoObj = JSON.parse(produtoData);
@@ -75,7 +82,7 @@ export default function Comprar({navigation, imagem, titulo}) {
                         </View>
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn02}>
-                                <Text onPress={() => setCompra(false)} style={css.TextoBTNC}>Comprar</Text>
+                                <Text onPress={() => setCadastro( true ) } style={css.TextoBTNC}>Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     </View>    
@@ -91,15 +98,17 @@ const css = StyleSheet.create({
         width: "100%",
     },
     caixa:{
-        height: "14%",
+        height: 95,
         width: "100%",
         backgroundColor: "#13293D",
+        display:"flex",
+        alignItems:"center"
     },
     tinyLogo:{
         height: "55%",
         width: "25%",
         marginTop: 29,
-        marginLeft: 150
+
     },
     ImageCarro:{
         width: 350,
@@ -123,17 +132,16 @@ const css = StyleSheet.create({
         marginLeft: 20,
         flexDirection: "row",
         marginTop: -30,
+        alignItems:"center"
     },
     TextoRiscoLaranja:{
         fontSize: 25,
         marginLeft: 10,
-        marginTop: 5,
     },
     TextoPreco:{
         width: "50%",
         fontSize: 23,
         marginLeft: "25%",
-        marginTop: 5
     },
     csixaTextoDeta:{
         width: "90%",

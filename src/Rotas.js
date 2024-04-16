@@ -10,6 +10,7 @@ import Agenda from "./Agenda";
 import Local from "./Local";
 import Comprar from "./Comprar";
 import { UserContext } from './Context/UserContext';
+import { View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,11 +24,11 @@ export default function Rotas() {
 
     return (
         <NavigationContainer>
-            <Tab.Navigator screenOptions={{tabBarActiveTintColor: '#13293D',headerShown: false,tabBarStyle: {backgroundColor:"#13293D"}}}>
+            <Tab.Navigator screenOptions={{tabBarActiveTintColor: 'white',headerShown: false,tabBarStyle: {backgroundColor:"#13293D"}}}>
               <Tab.Screen name="Home" component={Home} options={{tabBarLabel: 'Home',tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="home" color={color} size={size} />),}} />
-              <Tab.Screen name='Agenda' component={Agenda}/>
-              <Tab.Screen name='Local' component={Local}/>
-              <Tab.Screen name='Comprar' component={Comprar}/>
+              <Tab.Screen name='Agenda' component={Agenda} options={{tabBarLabel: 'Agendar',tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="calendar-blank" color={color} size={size} />),}}/>
+              <Tab.Screen name='Local' component={Local} options={{tabBarLabel: 'Local',tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="google-maps" color={color} size={size} />),}}/>
+              <Tab.Screen name='Comprar' component={Comprar} options={{tabBarLabel: 'Carrinho',tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="cart-outline" color={color} size={size} />),}}/>
             </Tab.Navigator>
         </NavigationContainer>
         

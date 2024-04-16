@@ -19,7 +19,6 @@ export default function Produto({titulo, BTN02, BTN01, imagem, navigation }) {
     async function getStatus()
     {
       const status = await Network.getNetworkStateAsync();
-        console.log( status );
       if( status.type == "WIFI"){
         setRede( true );
       } else{

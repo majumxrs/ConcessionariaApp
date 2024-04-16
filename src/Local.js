@@ -22,16 +22,17 @@ export default function App() {
 }
 const css = StyleSheet.create({
   caixa:{
-    height:"14%",
+    height:95,
     width:"100%",
     backgroundColor:"#13293D",
-    //marginLeft:150,  
+    display:"flex",
+     alignItems:"center"
   },
   tinyLogo:{
     height:"55%",
     width:"25%",
     marginTop:29,
-    marginLeft:150
+
   },
   CaixaPai:{
     width:"100%",
@@ -43,12 +44,13 @@ const css = StyleSheet.create({
   },
   img:{
     width: 370,
-    height: 550,
+    height: 600,
     backgroundColor:"red",
     marginTop:15,
   },
   texto:{
     fontSize:25,
     color:"white",
+    marginTop: 15
   }
   })
