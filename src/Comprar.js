@@ -167,19 +167,18 @@ const css = StyleSheet.create({
         width:"100%",
         height:"100%",
        // paddingTop: StatusBar.currentHeight,
-      },
-      scrollView: {
-         marginHorizontal: 1,
-         width:"100%",
+    },
+    scrollView: {
+        marginHorizontal: 1,
+        width:"100%",
         height:"100%",
         //backgroundColor: 'pink',
-         margintop:50
-       
-      },
-      TextoCarro02:{
+        margintop:50
+    },
+    TextoCarro02:{
         marginBottom:100,
-      },
-      btn02:{
+    },
+    btn02:{
         marginTop:15,
         marginBottom:155,
         marginLeft:25,
@@ -187,13 +186,12 @@ const css = StyleSheet.create({
         width:"90%",
         height:"14%",
         borderRadius:10,
-      },
-      TextoBTNC:{
+    },
+    TextoBTNC:{
         color:"white",
         marginLeft:135,
         fontSize:25,
         marginTop:5,
-
-      },
+    },
       
 })  

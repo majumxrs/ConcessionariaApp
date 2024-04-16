@@ -21,7 +21,7 @@ export default function Agenda({navigation}) {
  {
     const { status } = await Calendar.requestCalendarPermissionsAsync();
     if (status === 'granted') {
-    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
+      const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
     }
  }
 
