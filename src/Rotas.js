@@ -8,7 +8,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Agenda from "./Agenda";
 import Local from "./Local";
-import TelaCompraSemWifi from "./TelaCompraSemWifi";
+import Comprar from "./Comprar";
 import { UserContext } from './Context/UserContext';
 
 const Tab = createBottomTabNavigator();
@@ -28,7 +28,7 @@ export default function Rotas() {
               {/* <Tab.Screen name='Cadastro' component={Cadastro}/> */}
               <Tab.Screen name='Agenda' component={Agenda}/>
               <Tab.Screen name='Local' component={Local}/>
-              <Tab.Screen name='TelaCompraSemWifi' component={TelaCompraSemWifi}/>
+              <Tab.Screen name='Comprar' component={Comprar}/>
             </Tab.Navigator>
         </NavigationContainer>
         
