@@ -16,14 +16,14 @@ export default function Produto({ titulo, imagem, navigation, preco }) {
         getPermissions();
     }, []);
 
-    async function getStatus() {
-        const status = await Network.getNetworkStateAsync();
-        console.log(status);
-        if (status.type == "WIFI") {
-            setRede(true);
-        } else {
-            setRede(false);
-        }
+    async function getStatus()
+    {
+      const status = await Network.getNetworkStateAsync();
+      if( status.type == "WIFI"){
+        setRede( true );
+      } else{
+        setRede( false );
+      }
     }
 
     useEffect(() => {
