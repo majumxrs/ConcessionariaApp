@@ -42,7 +42,7 @@ const dados =[
 {
   id: "07",
   imagem:require('../assets/FotoCarro/Cdilac.png'),
-  titulo: "Cdilac",
+  titulo: "Cadilac",
   preco:"950626"
 },
 {

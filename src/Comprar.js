@@ -111,7 +111,7 @@ const css = StyleSheet.create({
         width: 380,
         height: 230,
         marginLeft: 10,
-        marginTop: -35,
+        marginTop: -5,
     },
     TextoCarro:{
         fontSize: 25,

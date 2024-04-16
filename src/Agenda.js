@@ -88,7 +88,7 @@ export default function Agenda({ navigation }) {
         title: nome,
         startDate: new Date(date[2], date[1] - 1, date[0], startHora[0], startHora[1]),
         endDate: new Date(date[2], date[1] - 1, date[0], endHora[0], endHora[1]),
-        location: "Marra",
+        location: "Marra Concessionaria",
         notes: email,
       };
 
@@ -169,7 +169,7 @@ const css = StyleSheet.create({
     marginTop: 15,
   },
   image: {
-    width: 200,
+    width: 250,
     height: 150,
   },
   BTNVoltar: {
