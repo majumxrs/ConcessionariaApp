@@ -1,23 +1,20 @@
-import {useState, useEffect, useContext} from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image, StatusBar,SafeAreaView, ScrollView } from 'react-native';
+import { useState, useEffect, useContext } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet, Image, SafeAreaView, ScrollView } from 'react-native';
 import { UserContext } from './Context/UserContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Comprar({navigation, imagem, titulo}) {
+export default function Comprar({ navigation }) {
     const { setCompra } = useContext(UserContext);
     const [produto, setProduto] = useState(null);
-    
+
     async function getProduto() {
-        const produtoData = await AsyncStorage.getItem("produto");
-        if (produtoData) {
-            const produtoObj = JSON.parse(produtoData);
-            setProduto(produtoObj);
-        }
+        const item = await AsyncStorage.getItem("produto");
+        setProduto(JSON.parse(item));
     }
 
     useEffect(() => {
         getProduto();
-    }, []);
+    }, [produto]);
 
     return (
         <View style={css.caixaMairo}>
@@ -27,22 +24,23 @@ export default function Comprar({navigation, imagem, titulo}) {
             <View>
                 <TouchableOpacity>
                     <Text style={css.BTNVoltar} onPress={() => navigation.navigate("Home")}>❮</Text>
-                </TouchableOpacity>  
+                </TouchableOpacity>
             </View>
             <SafeAreaView style={css.container}>
-                <ScrollView style={css.scrollView}> 
+                <ScrollView style={css.scrollView}>
                     <View style={css.CaixaImga}>
                         {produto && (
                             <>
                                 <Image style={css.ImageCarro} source={produto.imagem} />
                                 <Text style={css.TextoCarro}>{produto.titulo}</Text>
+                                <View style={css.CaixaRiscoLaranja}>
+                                    <Text style={css.TextoRiscoLaranja}>Total:</Text>
+                                    <Text style={css.TextoPreco}>R$1000000000</Text>
+                                </View>
                             </>
                         )}
                     </View>
-                    <View style={css.CaixaRiscoLaranja}>
-                        <Text style={css.TextoRiscoLaranja}>Total:</Text>
-                        <Text style={css.TextoPreco}>R$1000000000</Text>
-                    </View>
+
                     <View>
                         <View style={css.csixaTextoDeta}>
                             <Text style={css.textoDetalhes}>ITENS DE SÉRIE:</Text>
@@ -58,7 +56,7 @@ export default function Comprar({navigation, imagem, titulo}) {
                             <Text style={css.TextoDetalhesDEntroCaixaP}>BRANCO PEROLA</Text>
                         </View>
                         <View>
-                            <Image style={css.ImageDetalheCarro} source={{uri: "https://www.webmotors.com.br/wp-content/uploads/2023/12/28173908/Honda-Civic-9a-geracao-2.webp"}} />
+                            <Image style={css.ImageDetalheCarro} source={{ uri: "https://www.webmotors.com.br/wp-content/uploads/2023/12/28173908/Honda-Civic-9a-geracao-2.webp" }} />
                         </View>
                         <View style={css.csixaTextoDeta}>
                             <Text style={css.textoDetalhes}>ITENS DE SÉRIE:</Text>
@@ -78,43 +76,43 @@ export default function Comprar({navigation, imagem, titulo}) {
                                 <Text onPress={() => setCompra(false)} style={css.TextoBTNC}>Comprar</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>    
+                    </View>
                 </ScrollView>
-            </SafeAreaView>        
+            </SafeAreaView>
         </View>
     )
 }
 
 const css = StyleSheet.create({
-    caixaMairo:{
+    caixaMairo: {
         height: "100%",
         width: "100%",
     },
-    caixa:{
+    caixa: {
         height: "14%",
         width: "100%",
         backgroundColor: "#13293D",
     },
-    tinyLogo:{
+    tinyLogo: {
         height: "55%",
         width: "25%",
         marginTop: 29,
         marginLeft: 150
     },
-    ImageCarro:{
-        width: 350,
+    ImageCarro: {
+        width: 380,
         height: 230,
-        marginLeft: 34,
+        marginLeft: 10,
         marginTop: -35,
     },
-    TextoCarro:{
+    TextoCarro: {
         fontSize: 25,
         fontWeight: "bold",
         marginTop: 25,
         marginLeft: 140,
-        marginBottom:45,
+        marginBottom: 45,
     },
-    CaixaRiscoLaranja:{
+    CaixaRiscoLaranja: {
         borderRadius: 8,
         borderWidth: 2,
         borderColor: '#C1813A',
@@ -124,26 +122,26 @@ const css = StyleSheet.create({
         flexDirection: "row",
         marginTop: -30,
     },
-    TextoRiscoLaranja:{
+    TextoRiscoLaranja: {
         fontSize: 25,
         marginLeft: 10,
         marginTop: 5,
     },
-    TextoPreco:{
+    TextoPreco: {
         width: "50%",
         fontSize: 23,
         marginLeft: "25%",
         marginTop: 5
     },
-    csixaTextoDeta:{
+    csixaTextoDeta: {
         width: "90%",
         marginLeft: 20,
         marginTop: 20,
     },
-    TextoDetalhesDEntroCaixaP:{
+    TextoDetalhesDEntroCaixaP: {
         marginLeft: 15,
     },
-    ImageDetalheCarro:{
+    ImageDetalheCarro: {
         width: "80%",
         height: 190,
         marginLeft: 34,
@@ -159,7 +157,7 @@ const css = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
-    btn02:{
+    btn02: {
         marginTop: 15,
         marginBottom: 155,
         marginLeft: 25,
@@ -168,13 +166,13 @@ const css = StyleSheet.create({
         height: "14%",
         borderRadius: 10,
     },
-    TextoBTNC:{
+    TextoBTNC: {
         color: "white",
         marginLeft: 135,
         fontSize: 25,
         marginTop: 5,
     },
-    BTNVoltar:{
+    BTNVoltar: {
         fontSize: 30,
         marginLeft: 10,
         marginTop: 10,
