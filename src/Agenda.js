@@ -1,72 +1,74 @@
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Keyboard, Platform } from "react-native";
-import {useState, useEffect, useContext} from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { UserContext } from "./Context/UserContext";
 import * as Network from 'expo-network';
 import * as Calendar from 'expo-calendar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+<<<<<<< HEAD
 export default function Agenda({navigation, imagem}) {
+=======
+export default function Agenda({ navigation }) {
+>>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
 
-  const [ nome, setNome ] = useState( "" );
-  const [ email, setEmail ] = useState( "" );
-  const [ data, setData ] = useState( "" );
-  const [ horaInicio, setHoraInicio ] = useState( "" );
-  const [ horaFinal, setHoraFinal ] = useState( "" );
-  const [rede, setRede ] = useState( false );
-  const [ dados, setDados ] =  useState([]);
-  const [agenda, setAgenda ] = useState();
-  const [ produto, setProduto ] = useState();
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [data, setData] = useState("");
+  const [horaInicio, setHoraInicio] = useState("");
+  const [horaFinal, setHoraFinal] = useState("");
+  const [rede, setRede] = useState(false);
+  const [dados, setDados] = useState([]);
+  const [agenda, setAgenda] = useState();
+  const [produto, setProduto] = useState();
 
- async function getPermissions()
- {
+  async function getPermissions() {
     const { status } = await Calendar.requestCalendarPermissionsAsync();
     if (status === 'granted') {
       const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
     }
- }
-
- useEffect(() => {
-  getPermissions();
- }, []);
-
-  async function getStatus()
-  {
-    const status = await Network.getNetworkStateAsync();
-    if( status.type == "WIFI"){
-      setRede( true );
-    } else{
-      setRede( false );
-    }
   }
 
-  async function getProduto()
-  {
-    const produto = await AsyncStorage.getItem( "produto" );
-    if( produto ) {
-      setProduto(produto);
-    }
-  }
+  useEffect(() => {
+    getPermissions();
+    getStatus();
+  }, []);
 
   useEffect( () => {
     getProduto();
+  }, [produto] );
+
+  useEffect(() => {
     getStatus();
-  } , [] );
+  }, [rede]);
 
-  useEffect( () => {
-    getStatus();
-  } , [rede] );
+  async function getStatus() {
+    const status = await Network.getNetworkStateAsync();
+    if (status.type == "WIFI") {
+      setRede(true);
+    } else {
+      setRede(false);
+    }
+  }
+  
+  
+
+  async function getProduto() {
+    const item = await AsyncStorage.getItem("produto");
+    setProduto(JSON.parse(item));
+  }
 
 
-  async function Salvar()
-  {
-    if(nome != "" && data != "" && horaInicio != "" && horaFinal != "" ){
 
-      Keyboard.dismiss();  
+
+  async function Salvar() {
+    if (nome != "" && data != "" && horaInicio != "" && horaFinal != "") {
+
+      Keyboard.dismiss();
 
       const defaultCalendarSource =
-      Platform.OS === 'ios'
-      ? await Calendar.getDefaultCalendarAsync()
-      : { isLocalAccount: true, name: 'Expo Calendar' };
+        Platform.OS === 'ios'
+          ? await Calendar.getDefaultCalendarAsync()
+          : { isLocalAccount: true, name: 'Expo Calendar' };
 
       const newCalendarID = await Calendar.createCalendarAsync({
         title: 'Expo Calendar',
@@ -81,23 +83,28 @@ export default function Agenda({navigation, imagem}) {
 
 
       let date = data.split("-");
+<<<<<<< HEAD
       let startHora = horaInicio.split(":");
       let endHora = horaFinal.split( ":" );
+=======
+      let startHora = horaInicio.split(".");
+      let endHora = horaFinal.split(".");
+>>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
 
 
 
       const newEvent = {
         title: nome,
-        startDate: new Date(date[2], date[1] -1 , date[0] , startHora[0], startHora[1] ),
-        endDate: new Date(date[2], date[1] -1 , date[0], endHora[0], endHora[1] ),
+        startDate: new Date(date[2], date[1] - 1, date[0], startHora[0], startHora[1]),
+        endDate: new Date(date[2], date[1] - 1, date[0], endHora[0], endHora[1]),
         location: "Marra",
         notes: email,
       };
 
-      try{
+      try {
         await Calendar.createEventAsync(newCalendarID, newEvent);
         alert('Evento criado com sucesso!');
-      } catch ( error ) {
+      } catch (error) {
         alert('Erro ao criar evento!');
       }
 
@@ -109,7 +116,7 @@ export default function Agenda({navigation, imagem}) {
     }
   }
 
-  return(
+  return (
     <View style={css.CaixaTotal}>
       <View style={css.caixa}>
         <Image
@@ -118,40 +125,47 @@ export default function Agenda({navigation, imagem}) {
         />
       </View >
       <TouchableOpacity>
-        <Text style={css.BTNVoltar} onPress={ () => navigation.navigate( "Home" ) }>❮</Text>
-      </TouchableOpacity>  
-      { rede ? 
+        <Text style={css.BTNVoltar} onPress={() => navigation.navigate("Home")}>❮</Text>
+      </TouchableOpacity>
+      {rede && produto ?
         <View style={css.caixa2} >
           <Text style={css.nomePag}>Agende um Horario</Text>
           <View style={css.CaixaDaMaju}>
             <Image style={css.image} source={produto.imagem} />
           </View>
           <View>
-          <Text style={css.nomeCarro}>{produto.nome}</Text>
-        </View>
+            <Text style={css.nomeCarro}>{produto.titulo}</Text>
+          </View>
           <View style={css.PaiInput}>
             <TextInput style={css.input} textInput={nome} value={nome} onChangeText={(digitado) => setNome(digitado)} placeholder="Nome Completo:" />
             <TextInput style={css.input} textInput={email} value={email} onChangeText={(digitado) => setEmail(digitado)} placeholder="Email:" />
+<<<<<<< HEAD
             <TextInput style={css.input} textInput={data} value={data} onChangeText={(digitado) => setData(digitado)} keyboardType='numeric' placeholder="Data: ex( 00-00-0000 )" />
             <TextInput style={css.input} textInput={horaInicio} value={horaInicio} onChangeText={(digitado) => setHoraInicio(digitado)}  placeholder="Horario de Inicio: ex( 00:00 )" />
             <TextInput style={css.input} textInput={horaFinal} value={horaFinal} onChangeText={(digitado) => setHoraFinal(digitado)}  placeholder="Encerramento: ex( 00:00 )" />
+=======
+            <TextInput style={css.input} textInput={data} value={data} onChangeText={(digitado) => setData(digitado)} keyboardType='numeric' placeholder="Data:" />
+            <TextInput style={css.input} textInput={horaInicio} value={horaInicio} onChangeText={(digitado) => setHoraInicio(digitado)} keyboardType='numeric' placeholder="Horario de Inicio:" />
+            <TextInput style={css.input} textInput={horaFinal} value={horaFinal} onChangeText={(digitado) => setHoraFinal(digitado)} keyboardType='numeric' placeholder="Encerramento:" />
+>>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
           </View>
           <TouchableOpacity style={css.btn} onPress={Salvar}>
             <Text style={css.Texto}>Agendar</Text>
           </TouchableOpacity>
         </View>
-      : 
-      <Text>Ops! Conecte-se a internet</Text>}  
+        :
+        <Text>Ops! Conecte-se a internet</Text>}
     </View>
   );
 }
 
 
-const css = StyleSheet .create({
+const css = StyleSheet.create({
   CaixaTotal: {
-    display:"flex",
-    alignItems:"center",
+    display: "flex",
+    alignItems: "center",
   },
+<<<<<<< HEAD
   caixa:{
     height:95,
     width:"100%",
@@ -159,75 +173,84 @@ const css = StyleSheet .create({
     display:"flex",
     alignItems:"center",
     justifyContent:"center"   
+=======
+  caixa: {
+    height: 75,
+    width: "100%",
+    backgroundColor: "#13293D",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+>>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
   },
-  caixa2:{
-    height:75,
-    width:"90%",
+  caixa2: {
+    height: 75,
+    width: "90%",
     alignItems: "center"
   },
-  tinyLogo:{
-    height:60,
-    width:"25%",
-    marginTop:15,
+  tinyLogo: {
+    height: 60,
+    width: "25%",
+    marginTop: 15,
   },
-  image:{
-    width:200,
-    height: 150,    
+  image: {
+    width: 200,
+    height: 150,
   },
-  BTNVoltar:{ 
-    fontSize:25,
-    marginRight:380
+  BTNVoltar: {
+    fontSize: 25,
+    marginRight: 380
   },
   nomePag: {
-    marginTop:10,
-    color:"black",
-    fontSize:25
+    marginTop: 10,
+    color: "black",
+    fontSize: 25
   },
-  nomeCarro:{
-    marginTop:10,
-    color:"black",
-    fontSize:20,
-    fontWeight:"900",
+  nomeCarro: {
+    marginTop: 10,
+    color: "black",
+    fontSize: 20,
+    fontWeight: "900",
   },
-  CaixaDaMaju:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
-  },
-  PaiInput: {
-    display:"flex",
-    alignItems:"center",
-    width:"100%"
+  CaixaDaMaju: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   PaiInput: {
-    display:"flex",
-    width:"90%",
-    alignItems:"center"
+    display: "flex",
+    alignItems: "center",
+    width: "100%"
   },
-  input:{
-    width:"100%",
+  PaiInput: {
+    display: "flex",
+    width: "90%",
+    alignItems: "center"
+  },
+  input: {
+    width: "100%",
     height: 50,
-    margin:10,
-    borderColor:"#C9994D",
-    borderRadius:15,
-    borderWidth:2,
-    padding:10,
+    margin: 10,
+    borderColor: "#C9994D",
+    borderRadius: 15,
+    borderWidth: 2,
+    padding: 10,
     backgroundColor: "white",
     marginTop: 20
   },
-  btn:{
-    width:200,
+  btn: {
+    width: 200,
     height: 50,
-    margin:20,
-    borderRadius:10,
-    backgroundColor:"#13293D",
+    margin: 20,
+    borderRadius: 10,
+    backgroundColor: "#13293D",
     display: "flex",
-    justifyContent:"center",
-    alignItems:"center"
+    justifyContent: "center",
+    alignItems: "center"
   },
-  Texto:{
-    color:"white",
-    fontSize:30,
-    fontWeight:"900"
+  Texto: {
+    color: "white",
+    fontSize: 30,
+    fontWeight: "900"
   },
 })
