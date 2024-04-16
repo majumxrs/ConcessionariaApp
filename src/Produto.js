@@ -86,7 +86,7 @@ export default function Produto({ titulo, imagem, navigation, preco }) {
                         </View>
                         :
                         <TouchableOpacity style={css.btn01} >
-                            <Text style={css.btn02}>COMPRAR</Text>
+                            <Text style={css.btn02} onPress={RedirecionaComprar}>COMPRAR</Text>
                         </TouchableOpacity>
                     }
                 </View>
