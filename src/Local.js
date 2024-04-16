@@ -21,17 +21,17 @@ export default function App() {
   );
 }
 const css = StyleSheet.create({
-    caixa:{
-      height:"14%",
-      width:"100%",
-      backgroundColor:"#13293D",
-      //marginLeft:150,  
+  caixa:{
+    height:"14%",
+    width:"100%",
+    backgroundColor:"#13293D",
+    //marginLeft:150,  
   },
   tinyLogo:{
-      height:"55%",
-      width:"25%",
-      marginTop:29,
-      marginLeft:150
+    height:"55%",
+    width:"25%",
+    marginTop:29,
+    marginLeft:150
   },
   CaixaPai:{
     width:"100%",

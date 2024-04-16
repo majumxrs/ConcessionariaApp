@@ -3,26 +3,26 @@ import Produto from '../src/Produto';
 
 
 const dados =[
-    {
-        id: "01",
-        imagem: require('../assets/FotoCarro/GmcPreta.png'),
-        titulo: "GMC Preta",
-        BTN01: "Agendar  |",
-        BTN02: "Comprar"
-    },
-    {
-      id: "02",
-      imagem:require('../assets/FotoCarro/Civic.png'),
-      titulo: "Civic",
-      BTN01: "Agendar  |",
-      BTN02: "Comprar"
-  },
-  {
-    id: "03",
-    imagem:require('../assets/FotoCarro/Hamer.png'),
-    titulo: "Hamer",
-    BTN01: "Agendar  |",
-    BTN02: "Comprar"
+{
+  id: "01",
+  imagem: require('../assets/FotoCarro/GmcPreta.png'),
+  titulo: "GMC Preta",
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
+},
+{
+  id: "02",
+  imagem:require('../assets/FotoCarro/Civic.png'),
+  titulo: "Civic",
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
+},
+{
+  id: "03",
+  imagem:require('../assets/FotoCarro/Hamer.png'),
+  titulo: "Hamer",
+  BTN01: "Agendar  |",
+  BTN02: "Comprar"
 },
 {
   id: "04",
@@ -61,60 +61,56 @@ const dados =[
 },
    
 ]
-export default function Itens()
+export default function Itens({navigation})
 {
-    return(
-        <View >
-          <View style={css.caixa}>
-                <Image
-                    style={css.tinyLogo}
-                    source={require("../assets/Logoconcessionaria.png")}
-                />
+  return(
+    <View >
+      <View style={css.caixa}>
+        <Image
+          style={css.tinyLogo}
+          source={require("../assets/Logoconcessionaria.png")}
+        />
+      </View>
+      <FlatList
+        data={dados}
+        renderItem={({item}) => (
+          <View style={css.Caixapai}>
+            <View style={css.teste}>
+              <Produto imagem={item.imagem} titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02} navigation={navigation}  /> 
             </View>
-            <FlatList
-                data={dados}
-                renderItem={({item}) => (<View style={css.Caixapai}>
-                  <View style={css.teste}>
-                    <Produto imagem={item.imagem} titulo={item.titulo} BTN01={item.BTN01} BTN02={item.BTN02} /> 
-                  </View>
-                  
-                </View>) }
-                keyExtractor={item => item.id}
-                contentContainerStyle={css.conteiner}
-                horizontal={false}
-                
-            />
-        </View>
-    );
+          </View>
+        )}
+        keyExtractor={item => item.id}
+        contentContainerStyle={css.conteiner}
+        horizontal={false}
+      />
+    </View>
+  );
 }
 const css = StyleSheet.create({
   conteiner:{
     width:"100%",
     display:"flex",
-     // margin: 10,
-     // gap: 50,
   },
   caixa:{
     height:"14%",
     width:"100%",
-    backgroundColor:"#13293D",
-    //marginLeft:150,  
-},
-tinyLogo:{
+    backgroundColor:"#13293D", 
+  },
+  tinyLogo:{
     height:"55%",
     width:"25%",
     marginTop:29,
     marginLeft:150
-},
-Caixapai:{
-        padding: 30,
-       // borderColor: "#C1813A",
-        borderWidth:1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems:"center",
-},
-teste: {
-  display:'flex'
-}
+  },
+  Caixapai:{
+    padding: 30,
+    borderWidth:1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems:"center",
+  },
+  teste: {
+    display:'flex'
+  }
 })

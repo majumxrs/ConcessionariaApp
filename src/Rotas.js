@@ -25,7 +25,6 @@ export default function Rotas() {
         <NavigationContainer>
             <Tab.Navigator screenOptions={{tabBarActiveTintColor: '#13293D',headerShown: false,tabBarStyle: {backgroundColor:"#13293D"}}}>
               <Tab.Screen name="Home" component={Home} options={{tabBarLabel: 'Home',tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="home" color={color} size={size} />),}} />
-              {/* <Tab.Screen name='Cadastro' component={Cadastro}/> */}
               <Tab.Screen name='Agenda' component={Agenda}/>
               <Tab.Screen name='Local' component={Local}/>
               <Tab.Screen name='Comprar' component={Comprar}/>

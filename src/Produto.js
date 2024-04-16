@@ -1,22 +1,16 @@
 import { useState , useEffect  } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useBatteryLevel } from 'expo-battery';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Network from 'expo-network';
+import * as Calendar from 'expo-calendar';
 
-export default function Produto({titulo , BTN02, BTN01,imagem }) {
+export default function Produto({titulo, BTN02, BTN01, imagem, navigation }) {
 
     const [ bateria, setBateria] = useState();
     const [rede , setRede] = useState();
-    //const{usuario} = useContext(UserProvider);
     const batteryLevel = useBatteryLevel();
 
-    async function getPermissions()
- {
-    const { status } = await Calendar.requestCalendarPermissionsAsync();
-    if (status === 'granted') {
-    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
-    }
- }
 
  useEffect(() => {
   getPermissions();
@@ -50,39 +44,42 @@ export default function Produto({titulo , BTN02, BTN01,imagem }) {
  {
     const { status } = await Calendar.requestCalendarPermissionsAsync();
     if (status === 'granted') {
-    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
+        const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
     }
  }
 
-  
+
+    async function RedirecionaAgendamento()
+    {
+        const produto = {
+            titulo: titulo,
+            imagem: imagem
+        }
+        await AsyncStorage.setItem( "produto", JSON.stringify( produto ) );
+        navigation.navigate( "Agenda" );
+    }
+
     return(
-        <View >
-             { rede ? <View style={css.caixa}>
-                <Image source={imagem} style={css.img}  />
-                <Text style={css.titulo}>{titulo}</Text>
-                {bateria >20 ? 
-                    <View style={css.CaixaBTN}>
-                        <TouchableOpacity style={css.btn01} >
-                            <Text style={css.BTN01}>{BTN01}</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={css.btn01} >
-                            <Text style={css.BTN02}>{BTN02}</Text>
-                        </TouchableOpacity>
-                    </View> 
-            :
-                <TouchableOpacity style={css.btn01} >
-                    <Text style={css.BTN02}>{BTN02}</Text>
-                </TouchableOpacity>
-            }
-             </View> 
-             :
-            <View style={css.caixa} >
-                <Image source={imagem} style={css.img}  />
-                <Text style={css.titulo}>{titulo}</Text>
-            </View>}
-             
+        <View style={css.caixa}>
+            <Image source={imagem} style={css.img}  />
+            <Text style={css.titulo}>{titulo}</Text>
+            {bateria >20 ? 
+            <View style={css.CaixaBTN}>
+            <TouchableOpacity style={css.btn01}>
+                <Text style={css.BTN01} onPress={RedirecionaAgendamento}>{BTN01}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={css.btn01} >
+                <Text style={css.BTN02} >{BTN02}</Text>
+            </TouchableOpacity>
+        </View> 
+        :
+            <TouchableOpacity style={css.btn01} >
+                <Text style={css.BTN02}>{BTN02}</Text>
+            </TouchableOpacity>
+        }
         </View>
     )
+  
 }
 
 const css = StyleSheet .create({
