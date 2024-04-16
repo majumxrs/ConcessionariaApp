@@ -9,7 +9,8 @@ function UserProvider({children})
     const[ usuario, setUsuario] = useState(null);
     const[ logado, setLogado ] = useState( false );
     const[ cadastro, setCadastro ] = useState( false );
-    const[ compra, setCompra ] = useState( false );  
+    const[ compra, setCompra ] = useState( false ); 
+    const[ compraFinalizada, setCompraFinalizada ] = useState( false ); 
 
     async function Login (email, senha )
     {
@@ -31,7 +32,7 @@ function UserProvider({children})
         infoUsuario();
     }, [] );
     return(
-        <UserContext.Provider value={ { usuario: usuario, logado:logado, cadastro: cadastro, compra: compra, Login, infoUsuario, setCadastro, setCompra, } }>
+        <UserContext.Provider value={ { usuario: usuario, logado:logado, cadastro: cadastro, compra: compra, compraFinalizada:compraFinalizada, setCompraFinalizada, Login, infoUsuario, setCadastro, setCompra, } }>
             {children}
         </UserContext.Provider>
     )

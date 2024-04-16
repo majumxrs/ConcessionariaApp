@@ -5,12 +5,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CompraFinalizada from './CompraFinalizada';
 
 export default function Comprar({ navigation }) {
-    const { compraFinalizada, setCompraFinalizada} = useContext( UserContext);
     const [produto, setProduto] = useState(null);
+    const {compraFinalizada, setCompraFinalizada} = useContext( UserContext );
 
-    if( compraFinalizada ) {
-        return( <CompraFinalizada/> )
-    }
+    
 
     async function getProduto() {
         const item = await AsyncStorage.getItem("produto");
@@ -20,6 +18,10 @@ export default function Comprar({ navigation }) {
     useEffect(() => {
         getProduto();
     }, [produto]);
+
+    if( compraFinalizada ) {
+        return( <CompraFinalizada/> )
+    }
 
     return (
         <View style={css.caixaMairo}>
@@ -78,7 +80,7 @@ export default function Comprar({ navigation }) {
                         </View>
                         <View style={css.CaixaPaiBTN}>
                             <TouchableOpacity style={css.btn02}>
-                                <Text onPress={() => setCadastro( true ) } style={css.TextoBTNC}>Comprar</Text>
+                                <Text onPress={() => setCompraFinalizada( true ) } style={css.TextoBTNC}>Comprar</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

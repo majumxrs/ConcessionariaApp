@@ -5,11 +5,7 @@ import * as Network from 'expo-network';
 import * as Calendar from 'expo-calendar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-<<<<<<< HEAD
-export default function Agenda({navigation, imagem}) {
-=======
 export default function Agenda({ navigation }) {
->>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
 
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -83,13 +79,8 @@ export default function Agenda({ navigation }) {
 
 
       let date = data.split("-");
-<<<<<<< HEAD
       let startHora = horaInicio.split(":");
       let endHora = horaFinal.split( ":" );
-=======
-      let startHora = horaInicio.split(".");
-      let endHora = horaFinal.split(".");
->>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
 
 
 
@@ -139,15 +130,9 @@ export default function Agenda({ navigation }) {
           <View style={css.PaiInput}>
             <TextInput style={css.input} textInput={nome} value={nome} onChangeText={(digitado) => setNome(digitado)} placeholder="Nome Completo:" />
             <TextInput style={css.input} textInput={email} value={email} onChangeText={(digitado) => setEmail(digitado)} placeholder="Email:" />
-<<<<<<< HEAD
             <TextInput style={css.input} textInput={data} value={data} onChangeText={(digitado) => setData(digitado)} keyboardType='numeric' placeholder="Data: ex( 00-00-0000 )" />
             <TextInput style={css.input} textInput={horaInicio} value={horaInicio} onChangeText={(digitado) => setHoraInicio(digitado)}  placeholder="Horario de Inicio: ex( 00:00 )" />
             <TextInput style={css.input} textInput={horaFinal} value={horaFinal} onChangeText={(digitado) => setHoraFinal(digitado)}  placeholder="Encerramento: ex( 00:00 )" />
-=======
-            <TextInput style={css.input} textInput={data} value={data} onChangeText={(digitado) => setData(digitado)} keyboardType='numeric' placeholder="Data:" />
-            <TextInput style={css.input} textInput={horaInicio} value={horaInicio} onChangeText={(digitado) => setHoraInicio(digitado)} keyboardType='numeric' placeholder="Horario de Inicio:" />
-            <TextInput style={css.input} textInput={horaFinal} value={horaFinal} onChangeText={(digitado) => setHoraFinal(digitado)} keyboardType='numeric' placeholder="Encerramento:" />
->>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
           </View>
           <TouchableOpacity style={css.btn} onPress={Salvar}>
             <Text style={css.Texto}>Agendar</Text>
@@ -165,7 +150,6 @@ const css = StyleSheet.create({
     display: "flex",
     alignItems: "center",
   },
-<<<<<<< HEAD
   caixa:{
     height:95,
     width:"100%",
@@ -173,15 +157,6 @@ const css = StyleSheet.create({
     display:"flex",
     alignItems:"center",
     justifyContent:"center"   
-=======
-  caixa: {
-    height: 75,
-    width: "100%",
-    backgroundColor: "#13293D",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
->>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
   },
   caixa2: {
     height: 75,

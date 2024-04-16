@@ -16,7 +16,6 @@ export default function Produto({ titulo, imagem, navigation }) {
         getPermissions();
     }, []);
 
-<<<<<<< HEAD
     async function getStatus()
     {
       const status = await Network.getNetworkStateAsync();
@@ -25,16 +24,6 @@ export default function Produto({ titulo, imagem, navigation }) {
       } else{
         setRede( false );
       }
-=======
-    async function getStatus() {
-        const status = await Network.getNetworkStateAsync();
-        console.log(status);
-        if (status.type == "WIFI") {
-            setRede(true);
-        } else {
-            setRede(false);
-        }
->>>>>>> 28f501bf0c7f0c71400335737e173cdc297a4d60
     }
 
     useEffect(() => {
